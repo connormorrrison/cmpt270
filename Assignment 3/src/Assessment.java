@@ -10,4 +10,7 @@ public class Assessment {
 
     public int getTotal() {
     }
+
+    public static void main(String[] args) {
+    }
 }

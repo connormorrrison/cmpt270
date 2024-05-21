@@ -4,4 +4,7 @@ public class Midterm {
 
     public String toString() {
     }
+
+    public static void main(String[] args) {
+    }
 }

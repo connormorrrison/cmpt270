@@ -7,4 +7,7 @@ public class Exam {
 
     public double getPercentage() {
     }
+
+    public static void main(String[] args) {
+    }
 }
