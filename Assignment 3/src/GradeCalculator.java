@@ -59,6 +59,7 @@ public class GradeCalculator {
                     total = scanner.nextInt();
                     System.out.println("How marks did you receive on the quiz?");
                     score = scanner.nextInt();
+                    course.addQuiz(total, score);
                     break;
                 case 4:
                     // read in the total weight and score for the lab exam
