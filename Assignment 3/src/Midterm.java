@@ -6,21 +6,21 @@
  */
 
 /**
- *
+ * Represents a midterm which is a type of Exam
  */
 public class Midterm extends Exam {
     /**
-     *
-     * @param total
-     * @param score
+     * Constructs a Midterm with a total possible score and obtained score
+     * @param total the total possible score
+     * @param score the score obtained
      */
     public Midterm(int total, int score) {
         super(total, score);
     }
 
     /**
-     *
-     * @return
+     * Returns a string representation of the midterm
+     * @return string representation of the midterm
      */
     public String toString() {
         return "Midterm: " + score + "/" + total;

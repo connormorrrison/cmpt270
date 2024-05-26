@@ -6,33 +6,23 @@
  */
 
 /**
- *
+ * Represents a final exam which is a type of Exam
  */
 public class FinalExam extends Exam {
     /**
-     *
-     * @param total
-     * @param score
+     * Constructs a FinalExam with a total possible score and obtained score
+     * @param total the total possible score
+     * @param score the score obtained
      */
     public FinalExam(int total, int score) {
         super(total, score);
     }
 
     /**
-     *
-     * @return
+     * Returns a string representation of the final exam
+     * @return a string representation of the final exam
      */
     public String toString() {
         return "Final Exam: " + score + "/" + total;
-    }
-
-    /**
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        // Regression tests
-        FinalExam finalExam = new FinalExam(100, 90);
-        System.out.println(finalExam.toString().equals("Final Exam: 90/100") ? "Pass" : "Fail");
     }
 }

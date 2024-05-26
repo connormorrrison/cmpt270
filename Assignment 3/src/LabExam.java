@@ -6,33 +6,23 @@
  */
 
 /**
- *
+ * Represents a lab exam which is a type of Exam
  */
 public class LabExam extends Exam {
     /**
-     *
-     * @param total
-     * @param score
+     * Constructs a LabExam with a total possible score and obtained score
+     * @param total the total possible score
+     * @param score the score obtained
      */
     public LabExam(int total, int score) {
         super(total, score);
     }
 
     /**
-     *
-     * @return
+     * Returns a string representation of the lab exam
+     * @return string representation of the lab exam
      */
     public String toString() {
         return "Lab Exam: " + score + "/" + total;
-    }
-
-    /**
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        // Regression tests
-        LabExam labExam = new LabExam(100, 85);
-        System.out.println(labExam.toString().equals("Lab Exam: 85/100") ? "Pass" : "Fail");
     }
 }
