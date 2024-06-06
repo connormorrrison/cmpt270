@@ -6,6 +6,7 @@
  */
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,15 +22,25 @@ public class AchievementManager {
      */
     public AchievementManager() {
         // todo: set up achievements class variable as a HashMap
+        achievements = new HashMap<>();
     }
 
     /**
      * Adds a new achievement
-     * @param achievement the achievment object to be added
+     * @param achievement the achievement object to be added
      * @throws IllegalArgumentException if achievement is null
      */
     public void addAchievement(Achievement achievement) {
         // todo: adds achievement to achievements map, key should be next available integer
+        if (achievement == null) {
+            throw new IllegalStateException("Achievement cannot be null.");
+        }
+
+        int nextId = achievements.size() + 1;
+        while (achievements.containsKey(nextId)) {
+            nextId++;
+        }
+        achievements.put(nextId, achievement);
     }
 
     /**
@@ -41,6 +52,7 @@ public class AchievementManager {
     public Achievement getAchievement(int id)
     {
         // todo: returns Achievement object stored in map with specified integer key
+
 
 	// this is here for stub purposes, remove and replace with correct return
 	return null;
