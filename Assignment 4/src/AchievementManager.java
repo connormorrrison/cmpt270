@@ -41,7 +41,7 @@ public class AchievementManager {
     public Achievement getAchievement(int id)
     {
         // todo: returns Achievement object stored in map with specified integer key
- 	
+
 	// this is here for stub purposes, remove and replace with correct return
 	return null;
     }
@@ -65,7 +65,7 @@ public class AchievementManager {
     public List<Achievement> getUnlockedAchievements()
     {
         // todo: implement this method
- 
+
         // this is here for stub purposes, remove and replace with correct return statement
         return null;
     }
