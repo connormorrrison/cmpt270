@@ -5,6 +5,7 @@
  * Course: CMPT 270 Section 01
  */
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -22,7 +23,7 @@ public class AchievementDemo {
         // todo: there is a problem with this line that prevents the program from compiling. Fix it.
         try {
             manager = reader.readAchievements("Assignment4/achievements.txt");
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             System.out.println("Error reading achievements.txt: " + e.getMessage());
             manager = new AchievementManager();
         }
@@ -53,7 +54,7 @@ public class AchievementDemo {
                     try {
                         reader.writeAchievements(manager);
                         System.out.println("Achievement saved successfully.");
-                    } catch (Exception e) {
+                    } catch (FileNotFoundException e) {
                         System.out.println("Error saving achievements.txt: " + e.getMessage());
                     }
                     break;

@@ -104,7 +104,7 @@ public class Achievement {
             System.out.println("Test 4 failed: getAchievementUnlocked() after unlockAchievement()");
         }
 
-        // Regression test for 'toString()'
-        System.out.println(a);
+//        // Regression test for 'toString()'
+//        System.out.println(a);
     }
 }

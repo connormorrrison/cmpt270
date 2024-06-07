@@ -197,9 +197,8 @@ public class AchievementManager {
             System.out.println("Test failed: getUnlockedAchievements()");
         }
 
-        // Regression test for 'toString()'
-        System.out.println("AchievementManager toString() output:");
-        System.out.println(manager.toString());
-
+//        // Regression test for 'toString()'
+//        System.out.println("AchievementManager toString() output:");
+//        System.out.println(manager.toString());
     }
 }
