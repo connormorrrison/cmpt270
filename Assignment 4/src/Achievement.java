@@ -67,7 +67,12 @@ public class Achievement {
         } else {
             status = "Locked";
         }
-        return "Achievement Name: " + achievementName + "\nAchievement Description: " + achievementDescription + "\nState: " + status;
+
+        String result = "";
+        result += "Name: " + achievementName + "\n";
+        result += "Description: " + achievementDescription + "\n";
+        result += "Unlocked: " + status + "\n";
+        return result;
     }
 
     /**
@@ -76,15 +81,15 @@ public class Achievement {
      */
     public static void main(String[] args) {
         // Regression test for 'Achievement(String name, String description)'
-        Achievement a = new Achievement("First Blood", "Kill an enemy for the first time.");
+        Achievement a = new Achievement("Collected: Apple", "Collected 5 Apples");
 
         // Regression test for 'getAchievementName()'
-        if (!a.getAchievementName().equals("First Blood")) {
+        if (!a.getAchievementName().equals("Collected: Apple")) {
             System.out.println("Test 1 failed: getAchievementName()");
         }
 
         // Regression test for 'getAchievementDescription()'
-        if (!a.getAchievementDescription().equals("Kill an enemy for the first time.")) {
+        if (!a.getAchievementDescription().equals("Collected 5 Apples")) {
             System.out.println("Test 2 failed: getAchievementDescription()");
         }
 

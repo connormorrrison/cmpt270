@@ -36,6 +36,7 @@ public class AchievementManager {
             throw new IllegalStateException("Achievement cannot be null.");
         }
 
+        // Find next available key
         int nextId = achievements.size() + 1;
         while (achievements.containsKey(nextId)) {
             nextId++;
@@ -52,10 +53,12 @@ public class AchievementManager {
     public Achievement getAchievement(int id)
     {
         // todo: returns Achievement object stored in map with specified integer key
+        if (!achievements.containsKey(id)) {
+            throw new IllegalStateException("Achievement does not exist.");
+        }
 
-
-	// this is here for stub purposes, remove and replace with correct return
-	return null;
+	    // this is here for stub purposes, remove and replace with correct return
+        return achievements.get(id);
     }
 
     /**
@@ -65,9 +68,15 @@ public class AchievementManager {
     public List<Achievement> getLockedAchievements()
     {
         // todo: implement this method
+        List<Achievement> lockedAchievements = new ArrayList<>();
+        for (Achievement achievement : achievements.values()) {
+            if (!achievement.getAchievementUnlocked()) {
+                lockedAchievements.add(achievement);
+            }
+        }
 
         // this is here for stub purposes, remove and replace with correct return
-        return null;
+        return lockedAchievements;
     }
 
     /**
@@ -77,9 +86,15 @@ public class AchievementManager {
     public List<Achievement> getUnlockedAchievements()
     {
         // todo: implement this method
+        List<Achievement> unlockedAchievements = new ArrayList<>();
+        for (Achievement achievement : achievements.values()) {
+            if (achievement.getAchievementUnlocked()) {
+                unlockedAchievements.add(achievement);
+            }
+        }
 
         // this is here for stub purposes, remove and replace with correct return statement
-        return null;
+        return unlockedAchievements;
     }
 
     /**
@@ -126,9 +141,16 @@ public class AchievementManager {
     public String toString()
     {
         // todo: implement the toString method
+        String result = "";
+        for (Map.Entry<Integer, Achievement> entry : achievements.entrySet()) {
+            result += "ID: " + entry.getKey() + "\n" +
+                    "Name: " + entry.getValue().getAchievementName() + "\n" +
+                    "Description: " + entry.getValue().getAchievementDescription() + "\n" +
+                    "Unlocked: " + (entry.getValue().getAchievementUnlocked() ? "Yes" : "No") + "\n\n";
+        }
 
         // this return statement is here for stub purposes. Replace with actual return string
-        return "";
+        return result;
     }
 
     /**
@@ -139,5 +161,45 @@ public class AchievementManager {
     {
         // todo: write regression test for all of the methods that YOU had to implement
         // there is no need to test the methods that were already implemented
+
+        // Regression test for 'AchievementManager()'
+        AchievementManager manager = new AchievementManager();
+
+        // Regression test for 'addAchievement(Achievement achievement)'
+        Achievement a1 = new Achievement("Complete Level 1", "Successfully finish the first level.");
+        manager.addAchievement(a1);
+        if (manager.getAllAchievements().size() != 1) {
+            System.out.println("Test failed: addAchievement(Achievement achievement)");
+        }
+
+        // Regression test for 'getAchievement(int id)'
+        try {
+            Achievement a = manager.getAchievement(1);
+            if (!a.getAchievementName().equals("Complete Level 1")) {
+                System.out.println("Test failed: getAchievement(int id)");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Test failed: getAchievement(int id)");
+        }
+
+        // Regression test for 'getLockedAchievements()'
+        Achievement a2 = new Achievement("Complete Level 2", "Successfully finish the second level.");
+        manager.addAchievement(a2);
+        List<Achievement> lockedAchievements = manager.getLockedAchievements();
+        if (lockedAchievements.size() != 2) {
+            System.out.println("Test failed: getLockedAchievements()");
+        }
+
+        // Regression test for 'getUnlockedAchievements()'
+        a1.unlockAchievement();
+        List<Achievement> unlockedAchievements = manager.getUnlockedAchievements();
+        if (unlockedAchievements.size() != 1) {
+            System.out.println("Test failed: getUnlockedAchievements()");
+        }
+
+        // Regression test for 'toString()'
+        System.out.println("AchievementManager toString() output:");
+        System.out.println(manager.toString());
+
     }
 }
