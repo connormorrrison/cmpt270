@@ -9,11 +9,20 @@ public class PotionSatchel {
      */
     private Map<PotionNames, ArrayList<Potion>> potions;
 
+    private static PotionSatchel instance = null;
+
     /**
      * Constructor, create a new HashMap to store the potions in
      */
-    public PotionSatchel() {
+    private PotionSatchel() {
         potions = new HashMap<PotionNames, ArrayList<Potion>>();
+    }
+
+    public static PotionSatchel getInstance() {
+        if (instance == null) {
+            instance = new PotionSatchel();
+        }
+        return instance;
     }
 
     /**
@@ -24,6 +33,15 @@ public class PotionSatchel {
      */
     public void addPotion(PotionNames name, Potion potion) {
         // todo: add the details for this
+        if (potions == null) {
+            throw new IllegalArgumentException("Potions cannot be null");
+        }
+        ArrayList<Potion> potionList = potions.get(name);
+        if (potionList == null) {
+            potionList = new ArrayList<>();
+            potions.put(name, potionList);
+        }
+        potionList.add(potion);
     }
 
     /**
@@ -35,5 +53,23 @@ public class PotionSatchel {
      */
     public void consumePotion(PotionNames name, Player player) throws NotInInventoryException {
         // todo: add the details for this
+        if (player == null) {
+            throw new IllegalArgumentException("Player cannot be null");
+        }
+
+        ArrayList<Potion> potionList = potions.get(name);
+        if (potionList == null) {
+            throw new NotInInventoryException("No potions of type " + name + " in inventory");
+        }
+        if (potionList.isEmpty()) {
+            throw new NotInInventoryException("No potions of type " + name + " in inventory");
+        }
+
+        Potion potion = potionList.remove(potionList.size() - 1);
+        potion.drink(player);
+
+        if (potionList.isEmpty()) {
+            potions.remove(name);
+        }
     }
 }
