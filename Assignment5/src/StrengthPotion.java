@@ -7,6 +7,7 @@ public class StrengthPotion extends Potion {
     @Override
     public void drink(Player target) {
         super.drink(target);
+        target.strengthEffect();
         System.out.println("You are strengthened!");
     }
 }

@@ -8,21 +8,19 @@ public class Player {
         System.out.println("Something strange happened...");
     }
 
-    // todo: add a method for each unique potion effect
-    public void heal() {
-        System.out.println("Player heals.");
+    public void healingEffect() {
+        System.out.println("Player is healed.");
     }
 
-    public void strengthen() {
-        System.out.println("Player's strength increases.");
+    public void strengthEffect() {
+        System.out.println("Player is strengthened.");
     }
 
-    public void becomeInvisible() {
-        System.out.println("Player becomes invisible.");
+    public void invisibilityEffect() {
+        System.out.println("Player is invisible.");
     }
 
-    public void takeDamage() {
-        System.out.println("Player takes poison damage.");
+    public void poisonEffect() {
+        System.out.println("Player is poisoned.");
     }
-
 }

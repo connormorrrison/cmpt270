@@ -32,16 +32,18 @@ public class PotionSatchel {
      * @throws IllegalArgumentException if potion is null
      */
     public void addPotion(PotionNames name, Potion potion) {
-        // todo: add the details for this
-        if (potions == null) {
-            throw new IllegalArgumentException("Potions cannot be null");
+        // Check if the potion is null
+        if (potion == null) {
+            throw new IllegalArgumentException("Potion cannot be null");
         }
-        ArrayList<Potion> potionList = potions.get(name);
-        if (potionList == null) {
-            potionList = new ArrayList<>();
-            potions.put(name, potionList);
+
+        // If there is no entry for the potion name, create a new list for this potion
+        if (!potions.containsKey(name)) {
+            potions.put(name, new ArrayList<>());
         }
-        potionList.add(potion);
+
+        // Add the potion to the list associated with the potion name
+        potions.get(name).add(potion);
     }
 
     /**
@@ -52,24 +54,18 @@ public class PotionSatchel {
      * @throws IllegalArgumentException if player is null
      */
     public void consumePotion(PotionNames name, Player player) throws NotInInventoryException {
-        // todo: add the details for this
+        // Check if the player is null
         if (player == null) {
             throw new IllegalArgumentException("Player cannot be null");
         }
 
-        ArrayList<Potion> potionList = potions.get(name);
-        if (potionList == null) {
-            throw new NotInInventoryException("No potions of type " + name + " in inventory");
-        }
-        if (potionList.isEmpty()) {
+        // Check if the potion is in the inventory
+        if (!potions.containsKey(name) || potions.get(name).isEmpty()) {
             throw new NotInInventoryException("No potions of type " + name + " in inventory");
         }
 
-        Potion potion = potionList.remove(potionList.size() - 1);
+        // Potion is in inventory, consume it
+        Potion potion = potions.get(name).remove(0);
         potion.drink(player);
-
-        if (potionList.isEmpty()) {
-            potions.remove(name);
-        }
     }
 }

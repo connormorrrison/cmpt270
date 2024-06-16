@@ -8,8 +8,8 @@ public class PotionDemo {
         PotionFactory factory = new PotionFactory();
 
         ArrayList<Ingredients> ingredients = new ArrayList<Ingredients>();
-        ingredients.add(Ingredients.FLOWER);
-        ingredients.add(Ingredients.LEAF);
+        ingredients.add(Ingredients.OIL);
+        ingredients.add(Ingredients.VENOM);
 
         Potion newPotion = factory.craftPotion(ingredients);
         PotionSatchel.getInstance().addPotion(newPotion.getPotionName(), newPotion);

@@ -7,6 +7,7 @@ public class HealingPotion extends Potion {
     @Override
     public void drink(Player target) {
         super.drink(target);
+        target.healingEffect();
         System.out.println("You are healed!");
     }
 }

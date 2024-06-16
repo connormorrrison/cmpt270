@@ -7,6 +7,7 @@ public class PoisonPotion extends Potion {
     @Override
     public void drink(Player target) {
         super.drink(target);
+        target.poisonEffect();
         System.out.println("You are poisoned!");
     }
 }
