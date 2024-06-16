@@ -1,3 +1,10 @@
+/**
+ * Name: Connor Morrison
+ * NSID: tvi340
+ * Student Number: 11374770
+ * Course: CMPT 270 Section 01
+ */
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +16,7 @@ public class PotionSatchel {
      */
     private Map<PotionNames, ArrayList<Potion>> potions;
 
+    // Singleton instance
     private static PotionSatchel instance = null;
 
     /**
@@ -18,6 +26,10 @@ public class PotionSatchel {
         potions = new HashMap<PotionNames, ArrayList<Potion>>();
     }
 
+    /**
+     * Returns a single instance of the PotionSatchel class, or creates instance if it doesn't exist already
+     * @return the single instance of PotionSatchel class
+     */
     public static PotionSatchel getInstance() {
         if (instance == null) {
             instance = new PotionSatchel();
@@ -32,7 +44,6 @@ public class PotionSatchel {
      * @throws IllegalArgumentException if potion is null
      */
     public void addPotion(PotionNames name, Potion potion) {
-        // Check if the potion is null
         if (potion == null) {
             throw new IllegalArgumentException("Potion cannot be null");
         }
@@ -54,7 +65,6 @@ public class PotionSatchel {
      * @throws IllegalArgumentException if player is null
      */
     public void consumePotion(PotionNames name, Player player) throws NotInInventoryException {
-        // Check if the player is null
         if (player == null) {
             throw new IllegalArgumentException("Player cannot be null");
         }
@@ -68,4 +78,29 @@ public class PotionSatchel {
         Potion potion = potions.get(name).remove(0);
         potion.drink(player);
     }
+
+//    public static void main(String[] args) {
+//        // Regression test for 'PotionSatchel()'
+//        PotionSatchel constructorTest = new PotionSatchel();
+//        assert constructorTest != null : "PotionSatchel instance creation failed";
+//
+//        // Regression test for 'getInstance()'
+//        PotionSatchel singletonTest = PotionSatchel.getInstance();
+//        assert singletonTest != null : "Singleton instance creation failed";
+//        assert singletonTest == PotionSatchel.getInstance() : "Singleton instances do not match";
+//
+//        // Regression test for 'addPotion(PotionNames name, Potion potion)'
+//        Potion healingPotion = new HealingPotion(10);
+//        singletonTest.addPotion(PotionNames.HEALING, healingPotion);
+//        assert singletonTest.potions.get(PotionNames.HEALING).contains(healingPotion) : "Healing potion was not added to the satchel";
+//
+//        // Regression test for 'consumePotion(PotionNames name, Player player)'
+//        Player player = new Player();
+//        try {
+//            singletonTest.consumePotion(PotionNames.HEALING, player);
+//            assert !singletonTest.potions.get(PotionNames.HEALING).contains(healingPotion) : "Healing potion was not consumed from the satchel";
+//        } catch (NotInInventoryException e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }
 }

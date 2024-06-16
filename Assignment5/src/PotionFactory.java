@@ -1,3 +1,10 @@
+/**
+ * Name: Connor Morrison
+ * NSID: tvi340
+ * Student Number: 11374770
+ * Course: CMPT 270 Section 01
+ */
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,20 +23,18 @@ public class PotionFactory {
      */
     public Potion craftPotion(List<Ingredients> ingredients)
     {
-        // todo: implement the factory pattern by comparing the provided ingredients with the specific recipes of your potions
+        // Potion recipes mapped to ingredient sets
         Map<Set<Ingredients>, PotionNames> recipes = new HashMap<>();
         recipes.put(Set.of(Ingredients.PLANT, Ingredients.MINERAL), PotionNames.HEALING);
         recipes.put(Set.of(Ingredients.SPICE, Ingredients.VENOM), PotionNames.INVISIBILITY);
         recipes.put(Set.of(Ingredients.VENOM, Ingredients.MINERAL), PotionNames.POISON);
         recipes.put(Set.of(Ingredients.MINERAL, Ingredients.OIL), PotionNames.STRENGTH);
 
-        // Convert the list of ingredients to a set to ignore the order and duplicates
+        // Ignore duplicates and order
         Set<Ingredients> ingredientSet = new HashSet<>(ingredients);
 
-        // Check if the ingredients match any recipe
+        // Check if ingredients match existing recipe or 'FAILED' as default
         PotionNames potionName = recipes.getOrDefault(ingredientSet, PotionNames.FAILED);
-
-        // Return the appropriate potion
         switch (potionName) {
             case HEALING:
                 return new HealingPotion(10);

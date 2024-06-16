@@ -9,7 +9,7 @@ public class PotionDemo {
 
         ArrayList<Ingredients> ingredients = new ArrayList<Ingredients>();
         ingredients.add(Ingredients.OIL);
-        ingredients.add(Ingredients.VENOM);
+        ingredients.add(Ingredients.OIL);
 
         Potion newPotion = factory.craftPotion(ingredients);
         PotionSatchel.getInstance().addPotion(newPotion.getPotionName(), newPotion);
