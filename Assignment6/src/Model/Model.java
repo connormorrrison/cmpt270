@@ -47,7 +47,19 @@ public class Model extends Observable {
      */
     public Model()
     {
-        // todo: initialize model data, use javadoc for guidelines
+        // Initialize game board
+        gameBoard = new Marker[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                gameBoard[i][j] = Marker.NONE;
+            }
+        }
+
+        // Initialize current turn
+        currentTurn = Marker.X;
+
+        // Initialize winner to null
+        winner = null;
     }
 
     /**
@@ -59,8 +71,33 @@ public class Model extends Observable {
      */
     public void setState(int x, int y) throws GameOverException, IllegalMarkerPlacementException
     {
-        // todo: implement this method using the provided javadoc for guidelines
-    }
+        // Check if game is already over
+        if (winner != null) {
+            throw new GameOverException("The game is over.");
+        }
+
+        // Check if the spot has already been taken
+        if (gameBoard[x][y] != Marker.NONE) {
+            throw new IllegalMarkerPlacementException("This cell is already occupied.");
+        }
+
+        // Update cell with current player's marker
+        gameBoard[x][y] = currentTurn;
+
+        // Detect the winner
+        detectWinner();
+
+        // Switch the turn
+        if (currentTurn == Marker.X) {
+            currentTurn = Marker.O;
+        } else {
+            currentTurn = Marker.X;
+        }
+
+        // Notify observers
+        setChanged();
+        notifyObservers();
+        }
 
     /**
      * Scan the gameBoard to determine if one player has won, or if the board is full and the game is a tie
@@ -77,7 +114,41 @@ public class Model extends Observable {
      */
     private void detectWinner()
     {
-        // todo: implement winner detection algorithm, see javadoc for guidelines
+        // Check rows and columns
+        for (int i = 0; i < 3; i++) {
+            if (gameBoard[i][0] == gameBoard[i][1] && gameBoard[i][1] == gameBoard[i][2] && gameBoard[i][0] != Marker.NONE) {
+                winner = gameBoard[i][0];
+                return;
+            }
+            if (gameBoard[0][i] == gameBoard[1][i] && gameBoard[1][i] == gameBoard[2][i] && gameBoard[0][i] != Marker.NONE) {
+                winner = gameBoard[0][i];
+                return;
+            }
+        }
+
+        // Check diagonals
+        if (gameBoard[0][0] == gameBoard[1][1] && gameBoard[1][1] == gameBoard[2][2] && gameBoard[0][0] != Marker.NONE) {
+            winner = gameBoard[0][0];
+            return;
+        }
+        if (gameBoard[0][2] == gameBoard[1][1] && gameBoard[1][1] == gameBoard[2][0] && gameBoard[0][2] != Marker.NONE) {
+            winner = gameBoard[0][2];
+            return;
+        }
+
+        // Check for a tie
+        boolean isFull = true;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (gameBoard[i][j] == Marker.NONE) {
+                    isFull = false;
+                    break;
+                }
+            }
+        }
+        if (isFull) {
+            winner = Marker.NONE;
+        }
     }
 
     /**
@@ -118,6 +189,21 @@ public class Model extends Observable {
      */
     public void resetModel()
     {
-        // todo: implement this method, use the javadoc for guidelines
+        // Reset the gameBoard
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                gameBoard[i][j] = Marker.NONE;
+            }
+        }
+
+        // Reset the current turn to X
+        currentTurn = Marker.X;
+
+        // Reset the winner to null
+        winner = null;
+
+        // Notify observers
+        setChanged();
+        notifyObservers();
     }
 }
