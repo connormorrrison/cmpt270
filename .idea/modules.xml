@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Assignment 1/Assignment 1.iml" filepath="$PROJECT_DIR$/Assignment 1/Assignment 1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Assignment 2/Assignment 2.iml" filepath="$PROJECT_DIR$/Assignment 2/Assignment 2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Assignment 3/Assignment 3.iml" filepath="$PROJECT_DIR$/Assignment 3/Assignment 3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Assignment4/Assignment4.iml" filepath="$PROJECT_DIR$/Assignment4/Assignment4.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Assignment5/Assignment5.iml" filepath="$PROJECT_DIR$/Assignment5/Assignment5.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Assignment6/Assignment6.iml" filepath="$PROJECT_DIR$/Assignment6/Assignment6.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/Assignments.iml" filepath="$PROJECT_DIR$/.idea/Assignments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/assignment1/assignment1.iml" filepath="$PROJECT_DIR$/assignment1/assignment1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/assignment2/assignment2.iml" filepath="$PROJECT_DIR$/assignment2/assignment2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/assignment3/assignment3.iml" filepath="$PROJECT_DIR$/assignment3/assignment3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/assignment4/assignment4.iml" filepath="$PROJECT_DIR$/assignment4/assignment4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/assignment5/assignment5.iml" filepath="$PROJECT_DIR$/assignment5/assignment5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/assignment6/assignment6.iml" filepath="$PROJECT_DIR$/assignment6/assignment6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/assignments.iml" filepath="$PROJECT_DIR$/.idea/assignments.iml" />
     </modules>
   </component>
 </project>
